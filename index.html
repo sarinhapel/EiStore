@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EISTORES | O Manto Oficial</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="header-inner container">
+            <div class="header-left">
+                <div class="logo">EIS<span class="destaque">STORE</span></div>
+            </div>
+            <div class="header-right">
+               <a href="https://wa.me/5513991312847" target="_blank" class="whatsapp-link icon-btn">
+                    <i class="ri-whatsapp-line"></i>
+               </a>
+
+               <!-- MENU MOBILE -->
+                <button id="menu-mobile-btn" class="icon-btn"><i class="ri-menu-line"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENU MOBILE -->
+    <div id="mobile-menu" class="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <div class="mobile-header">
+                <div class="logo">EIS<span class="destaque">STORE</span></div>
+                <button id="close-menu" class="icon-btn"><i class="ri-close-line"></i></button>
+            </div>
+            <ul class="mobile-links">
+                <li><a href="#" onclick="filterProducts('todos')">Todos</a></li>
+                <li><a href="#" onclick="filterProducts('Brasileirão')">Brasileirão</a></li>
+                <li><a href="#" onclick="filterProducts('Europeu')">Europeu</a></li>
+                <li><a href="#" onclick="filterProducts('Seleções')">Seleções</a></li>
+                <li><a href="#" onclick="filterProducts('NBA')">NBA</a></li>
+                <li><a href="#" onclick="filterProducts('Retro')">Retro</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HERO SLIDER -->
+    <section class="hero-slider-section">
+        <div class="hero-swiper swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide hero-image" style="background-image:url('img/hero1.jpg')">
+                    <div class="hero-text">
+                        <h2>Bem-vindo à EISTORE</h2>
+                        <button class="btn-hero">Confira</button>
+                    </div>
+                </div>
+                <div class="swiper-slide hero-image" style="background-image:url('img/hero2.jpg')">
+                    <div class="hero-text">
+                        <h2>Camisetas de Times Oficiais</h2>
+                        <button class="btn-hero">Compre Agora</button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+     <!-- NAVEGAÇÃO DE LIGAS -->
+    <section class="container section-spacing">
+        <h2 class="section-title">NAVEGUE POR LIGAS</h2>
+        <div class="swiper circle-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide circle-item" onclick="filterProducts('Brasileirão')">
+                    <div class="circle-img"><img src="img/brasileirão.webp" alt="Brasileirão"></div>
+                    <p>Brasileirão</p>
+                </div>
+                <div class="swiper-slide circle-item" onclick="filterProducts('Europeu')">
+                    <div class="circle-img"><img src="img/premier-league.png" alt="Premier League"></div>
+                    <p>Premier</p>
+                </div>
+                <div class="swiper-slide circle-item" onclick="filterProducts('Europeu')">
+                    <div class="circle-img"><img src="img/laliga.png" alt="La Liga"></div>
+                    <p>La Liga</p>
+                </div>
+                <div class="swiper-slide circle-item" onclick="filterProducts('NBA')">
+                    <div class="circle-img"><img src="img/nba-logo.png" alt="NBA"></div>
+                    <p>NBA</p>
+                </div>
+                <div class="swiper-slide circle-item" onclick="filterProducts('Seleções')">
+                    <div class="circle-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Brazilian_Football_Confederation_logo.svg/1200px-Brazilian_Football_Confederation_logo.svg.png" alt="Seleções"></div>
+                    <p>Seleções</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="section-spacing">
+        <div class="container">
+            <h2 class="section-title">Produtos</h2>
+            <div id="grid-produtos" class="products-grid"></div>
+        </div>
+    </section>
+
+    <!-- MODAL ZOOM -->
+    <div id="modal-produto" class="modal-backdrop">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <button class="nav-arrow left" onclick="prevImage()">❮</button>
+                    <img id="modal-img" src="" alt="Produto">
+                    <button class="nav-arrow right" onclick="nextImage()">❯</button>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-category" id="modal-cat"></p>
+                    <h3 id="modal-title"></h3>
+                    <div class="modal-prices">
+                        <span id="modal-old-price"></span>
+                        <span id="modal-price"></span>
+                    </div>
+                    <p class="installments-text" id="modal-installments"></p>
+                    <div class="divider"></div>
+                    <div class="sizes-options">
+                        <input type="radio" name="size" value="P" id="size-p" checked><span for="size-p">P</span>
+                        <input type="radio" name="size" value="M" id="size-m"><span for="size-m">M</span>
+                        <input type="radio" name="size" value="G" id="size-g"><span for="size-g">G</span>
+                        <input type="radio" name="size" value="GG" id="size-gg"><span for="size-gg">GG</span>
+                    </div>
+                    <a href="https://wa.me/5513991312847" target="_blank" class="btn-whatsapp-buy">
+                        <i class="ri-whatsapp-line"></i> Comprar pelo WhatsApp
+                    </a>
+                    <p class="secure-text"><i class="ri-shield-check-line"></i> Compra 100% segura</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h3>Sobre</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Quem somos</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Atendimento</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Formas de Pagamento</h3>
+                <div class="payment-icons">
+                    <i class="ri-credit-card-line"></i>
+                    <i class="ri-bank-line"></i>
+                    <i class="ri-paypal-line"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 EISTORE. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SWIPER JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>
